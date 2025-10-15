@@ -428,7 +428,7 @@ padding: 0 8px;
 /* SMALL PHONES, LARGE SMARTPHONES */
 
 @media (max-width: 550px) {
-    .btn_menu {
+    .btn__menu {
         display: block;
     }
 
