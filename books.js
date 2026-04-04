@@ -21,10 +21,11 @@ async function renderBooks(filter) {
       (a, b) =>
         (b.salePrice || b.originalPrice) - (a.salePrice || a.originalPrice)
     );
-  } else if (filter === "RATING") {
+  }
+  else if (filter === "RATING") {
     books.sort((a, b) => b.rating - a.rating);
   }
-
+  
   const booksHtml = books
     .map((book) => {
       return `<div class="book">
@@ -38,7 +39,9 @@ async function renderBooks(filter) {
       ${ratingsHTML(book.rating)}
     </div>
     <div class="book__price">
+     <span class="book__price--normal">$59.95</span> $14.95
       ${priceHTML(book.originalPrice, book.salePrice)}
+     </div>
     </div>
   </div>`;
     })
@@ -50,10 +53,8 @@ async function renderBooks(filter) {
 function priceHTML(originalPrice, salePrice) {
   if (!salePrice) {
     return `$${originalPrice.toFixed(2)}`;
-  }
-  return `<span class="book__price--normal">$${originalPrice.toFixed(
-    2
-  )}</span>$${salePrice.toFixed(2)}`;
+  } 
+    return `<span class="book__price--normal">$${originalPrice.toFixed(2)}</span> $${salePrice.toFixed(2)}`
 }
 
 function ratingsHTML(rating) {
